@@ -1,0 +1,2 @@
+This is a test file to see whether the script extracts the contents of the cracked Zip-file.
+
