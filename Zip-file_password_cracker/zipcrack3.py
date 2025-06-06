@@ -1,4 +1,6 @@
 import zipfile
+import optparse
+from threading import Thread
 
 def extract_file(zFile, password):
         try:
@@ -8,6 +10,20 @@ def extract_file(zFile, password):
                 return
 
 def main():
+	parser = optparse.OptionParser("usage%prog " +\ "-f <zipfile> -d <dictionary>")
+	parser.add_option('f', dest = 'zname', type = 'string',\help='specify zip file')
+	parser.add_option('-d', dest = 'dname', type = 'string', \help = 'specify dictionary file')
+	(options, args) = parser.parse_args()
+	if (options.zname == None) | (options.dname == None):
+		print parser.usage
+		exit(0)
+	else:
+		zname = options.zname
+		dname = options.dname
+
+
+
+
         zFile = zipfile.ZipFile('dummy.zip')
         passfile = open('dictionary.txt')
         for line in passfile.readlines():
